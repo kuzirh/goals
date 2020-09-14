@@ -12,16 +12,23 @@ export default function App() {
     ]);
   };
 
+  const removeGoalHandler = (goalId: string) => {
+    setCourseGoals((currentGoals: Array<object>) => {
+      return currentGoals.filter((goal: any) => goal.id !== goalId);
+    });
+  };
+
   return (
     <View style={styles.main}>
       <GoalInput onAddGoal={addGoalHandler} />
       <FlatList
         keyExtractor={(item: any, index) => item.id}
         data={courseGoals}
-        renderItem={(itemData: { item: { value: string } }) => (
+        renderItem={(itemData: { item: { value: string; id: string } }) => (
           <GoalItem
             title={itemData.item.value}
-            onDelete={() => console.log('press me harder daddy')}
+            id={itemData.item.id}
+            onDelete={removeGoalHandler}
           />
         )}
       />
