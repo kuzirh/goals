@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import {
+  View,
+  TextInput,
+  Button,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 
-interface GoalInputProps {
-  onAddGoal: any;
-}
-
-const GoalInput = (props: GoalInputProps) => {
+const GoalInput = (props: { onAddGoal: any }) => {
   const [enteredGoal, setEnteredGoal] = useState<string>('');
   const goalInputHandler = (enterText: string) => {
     setEnteredGoal(enterText);
